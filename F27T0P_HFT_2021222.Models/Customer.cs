@@ -18,7 +18,7 @@ namespace F27T0P_HFT_2021222.Models
         [Required]
         public string Name { get; set; }
 
-        public virtual List<Brand> BoughtCards { get; set; }
+        public virtual List<GpuType> BoughtCards { get; set; }
     }
 }
  

@@ -20,9 +20,11 @@ namespace F27T0P_HFT_2021222.Models
 
         public int? BasePrice { get; set; }
 
-        public virtual Brand Brand { get; set; }
+        public virtual Customer Customer { get; set; }
 
-        [ForeignKey(nameof(Brand))]
-        public int BrandId { get; set; }
+        public virtual List<Brand> Brands { get; set; }
+
+        [ForeignKey(nameof(Customer))]
+        public int CustomerId { get; set; }
     }
 }
