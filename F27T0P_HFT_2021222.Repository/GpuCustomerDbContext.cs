@@ -45,6 +45,7 @@ namespace F27T0P_HFT_2021222.Repository
             var brands = new List<Brand>()
             {
                 new Brand(){Name = "ASUS", GpuTypeId = 1},
+                new Brand(){Name = "PALIT", GpuTypeId = 1},
                 new Brand(){Name = "GIGABYTE", GpuTypeId = 2},
                 new Brand(){Name = "SAPPHIRE", GpuTypeId = 5},
                 new Brand(){Name = "MSI", GpuTypeId = 3},
