@@ -10,6 +10,10 @@ namespace F27T0P_HFT_2021222.Models
 {
     public class Brand
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
         [MaxLength(50)]
         [Required]
         public string Name { get; set; }

@@ -44,13 +44,13 @@ namespace F27T0P_HFT_2021222.Repository
 
             var brands = new List<Brand>()
             {
-                new Brand(){Name = "ASUS", GpuTypeId = 1},
-                new Brand(){Name = "PALIT", GpuTypeId = 1},
-                new Brand(){Name = "GIGABYTE", GpuTypeId = 2},
-                new Brand(){Name = "SAPPHIRE", GpuTypeId = 5},
-                new Brand(){Name = "MSI", GpuTypeId = 3},
-                new Brand(){Name = "ZOTAC", GpuTypeId = 4},
-                new Brand(){Name = "NVIDIA", GpuTypeId = 6}
+                new Brand(){Id = 1, Name = "ASUS", GpuTypeId = 1},
+                new Brand(){Id = 2, Name = "PALIT", GpuTypeId = 1},
+                new Brand(){Id = 3, Name = "GIGABYTE", GpuTypeId = 2},
+                new Brand(){Id = 4, Name = "SAPPHIRE", GpuTypeId = 5},
+                new Brand(){Id = 5, Name = "MSI", GpuTypeId = 3},
+                new Brand(){Id = 6, Name = "ZOTAC", GpuTypeId = 4},
+                new Brand(){Id = 7, Name = "NVIDIA", GpuTypeId = 6}
             };
 
             var gpuTypes = new List<GpuType>()
