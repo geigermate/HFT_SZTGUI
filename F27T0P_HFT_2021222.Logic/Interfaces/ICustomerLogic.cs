@@ -13,6 +13,6 @@ namespace F27T0P_HFT_2021222.Logic.Interfaces
         void Delete(int id);
         Customer Read(int id);
         IQueryable<Customer> ReadAll();
-        void Delete(Customer item);
+        void Update(Customer item);
     }
 }

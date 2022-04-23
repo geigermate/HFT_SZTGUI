@@ -2,20 +2,23 @@
 using F27T0P_HFT_2021222.Models;
 using F27T0P_HFT_2021222.Repository;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace F27T0P_HFT_2021222.Logic
 {
-    public class BrandLogic : IBrandLogic
+    public class GpuTypeLogic : IGpuTypeLogic
     {
-        IRepository<Brand> repo;
+        IRepository<GpuType> repo;
 
-        public BrandLogic(IRepository<Brand> repo)
+        public GpuTypeLogic(IRepository<GpuType> repo)
         {
             this.repo = repo;
         }
 
-        public void Create(Brand item)
+        public void Create(GpuType item)
         {
             this.repo.Create(item);
         }
@@ -25,17 +28,17 @@ namespace F27T0P_HFT_2021222.Logic
             this.repo.Delete(id);
         }
 
-        public Brand Read(int id)
+        public GpuType Read(int id)
         {
             return this.repo.Read(id);
         }
 
-        public IQueryable<Brand> ReadAll()
+        public IQueryable<GpuType> ReadAll()
         {
             return this.repo.ReadAll();
         }
 
-        public void Update(Brand item)
+        public void Update(GpuType item)
         {
             this.repo.Update(item);
         }

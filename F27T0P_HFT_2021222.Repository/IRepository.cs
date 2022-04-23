@@ -8,7 +8,7 @@ namespace F27T0P_HFT_2021222.Repository
 {
     public interface IRepository<T> where T : class
     {
-        IQueryable<T> Readall();
+        IQueryable<T> ReadAll();
         T Read(int id);
         void Create(T item);
         void Update(T item);

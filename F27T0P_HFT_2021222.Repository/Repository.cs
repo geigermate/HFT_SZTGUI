@@ -21,7 +21,7 @@ namespace F27T0P_HFT_2021222.Repository
             ctx.SaveChanges();
         }
 
-        public IQueryable<T> Readall()
+        public IQueryable<T> ReadAll()
         {
             return ctx.Set<T>();
         }
