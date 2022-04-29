@@ -20,11 +20,18 @@ namespace F27T0P_HFT_2021222.Models
 
         public int? BasePrice { get; set; }
 
+        [NotMapped]
         public virtual Customer Customer { get; set; }
-
-        public virtual List<Brand> Brands { get; set; }
+        
+        [NotMapped]
+        public virtual ICollection<Brand> Brands { get; set; }
 
         [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
+
+        public GpuType()
+        {
+            this.Brands = new HashSet<Brand>();
+        }
     }
 }

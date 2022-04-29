@@ -46,11 +46,27 @@ namespace F27T0P_HFT_2021222.Logic
 
         //NON-CRUD
 
+        public double GetAverageGpuPrice(int customerId)
+        {
+            return this.repo.Read(customerId).BoughtCards.Average(x => x.BasePrice) ?? -1;
+        }
+
+        public double GetAverageGpuPrice()
+        {
+            return this.repo.ReadAll().Average(c => c.BoughtCards.Average(gpu => gpu.BasePrice) ?? -1);
+        }
+
+        //public double GetAverageGpuPrice()
+        //{
+        //    return this.repo.ReadAll().Average(c => c.BoughtCards.Average(gpu => gpu.BasePrice) ?? -1);
+        //}
+
         public IEnumerable<Customer> GetMostOwnedGpuCustomers()
         {
-            return (IEnumerable<Customer>)(from x in this.repo.ReadAll()
-                   where x.BoughtCards.Count() >= 2
-                   select x.Name);
+            return (IEnumerable<Customer>)(from c in this.repo.ReadAll()
+                                           let max = this.repo.ReadAll().Max(c => c.BoughtCards.ToArray().Length)
+                                           where c.BoughtCards.Count() >= max
+                                           select c.Name);
         }
 
         public IEnumerable<Customer> GetOwnersOrderedByNumOfGpus()
@@ -58,7 +74,7 @@ namespace F27T0P_HFT_2021222.Logic
             return (IEnumerable<Customer>)(from x in this.repo.ReadAll()
                                            orderby x.BoughtCards.Count() descending
                                            group x by x.Name into g
-                                           select new 
+                                           select new
                                            {
                                                Name = g.Key,
                                                NumOfGpus = g.Sum(x => x.BoughtCards.Count())
@@ -71,19 +87,19 @@ namespace F27T0P_HFT_2021222.Logic
                                            group x by x.BoughtCards.Sum(gpu => gpu.BasePrice) into g
                                            orderby g.Key ascending
                                            select g.Take(1));
-                   
+
         }
 
         public IEnumerable<Customer> GetHighestValueSpentCustomer()
         {
             return (IEnumerable<Customer>)(from x in this.repo.ReadAll()
-                   group x by x.BoughtCards.Sum(gpu => gpu.BasePrice) into g
-                   orderby g.Key descending
-                   select new RichCustomer()
-                   {
-                       Name = (this.repo.ReadAll().Select(x => x.Name)).ToString(),
-                       AllGpuValue = (int)g.Key
-                   });
+                                           group x by x.BoughtCards.Sum(gpu => gpu.BasePrice) into g
+                                           orderby g.Key descending
+                                           select new RichCustomer()
+                                           {
+                                               Name = (this.repo.ReadAll().Select(x => x.Name)).ToString(),
+                                               AllGpuValue = (int)g.Key
+                                           });
         }
 
         public class RichCustomer

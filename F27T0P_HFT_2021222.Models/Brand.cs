@@ -18,6 +18,7 @@ namespace F27T0P_HFT_2021222.Models
         [Required]
         public string Name { get; set; }
 
+        [NotMapped]
         public virtual GpuType GpuType { get; set; }
 
         [ForeignKey(nameof(GpuType))]

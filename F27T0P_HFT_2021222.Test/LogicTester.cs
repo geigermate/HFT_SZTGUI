@@ -39,19 +39,31 @@ namespace F27T0P_HFT_2021222.Test
                 }
             };
 
-            Customer fakeCustomer = new Customer()
+            var fakeCustomers = new List<Customer>()
             {
-                Id = 1,
-                Name = "Tesztelo",
-                BoughtCards = gpus,
-            };
+                new Customer()
+                {
+                    Id = 1,
+                    Name = "Tesztelo",
+                    BoughtCards = gpus,
+                }
+            }.AsQueryable();
 
             mockCustomerRepo = new Mock<IRepository<Customer>>();
-
             mockCustomerRepo.Setup(xy => xy.ReadAll())
-                            .Returns((IQueryable<Customer>)fakeCustomer);
+                            .Returns(fakeCustomers.AsQueryable());
 
             cl = new CustomerLogic(mockCustomerRepo.Object);
+        }
+
+        [Test]
+        public void AVGPriceTest()
+        {
+            //Act
+            var result = cl.GetAverageGpuPrice();
+
+            //Assert
+            Assert.That(result, Is.EqualTo(750000));
         }
     }
 }
