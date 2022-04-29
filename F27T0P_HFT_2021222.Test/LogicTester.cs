@@ -141,16 +141,6 @@ namespace F27T0P_HFT_2021222.Test
             Assert.That(result, Is.EqualTo(430000));
         }
 
-        //[Test]
-        //public void AVGPriceTestForAPerson()
-        //{
-        //    //Act
-        //    var result = cl.GetAverageGpuPriceForAPerson(mockCustomerRepo.Object.Read(cl.Read(1).Id).Id);
-
-        //    //Assert
-        //    Assert.That(result, Is.EqualTo(750000));
-        //}
-
         [Test]
         public void TestDelete()
         {
@@ -165,26 +155,10 @@ namespace F27T0P_HFT_2021222.Test
         public void MostGpuOwnedTest()
         {
             //Arrange
-            //var gpuTypes = new List<GpuType>()
-            //{
-            //    new GpuType(){Id = 1, Name = "RTX 3050",  BasePrice = 150000, CustomerId = 1},
-            //    new GpuType(){Id = 2, Name = "RTX 3060",  BasePrice = 200000, CustomerId = 2},
-            //    new GpuType(){Id = 3, Name = "RTX 3070",  BasePrice = 280000, CustomerId = 2},
-            //    new GpuType(){Id = 4, Name = "RTX 3080",  BasePrice = 400000, CustomerId = 2},
-            //    new GpuType(){Id = 5, Name = "RX 6800XT",  BasePrice = 500000, CustomerId = 3},
-            //    new GpuType(){Id = 6, Name = "RTX 3090", BasePrice = 900000}
-            //};
 
-            //var customers = new List<Customer>()
-            //{
-            //    new Customer(){Id = 1, Name = "Máté"},
-            //    new Customer(){Id = 2, Name = "Pista"},
-            //    new Customer(){Id = 3, Name = "Palkó"},
-            //};
-
-            var expected = new List<KeyValuePair<string, double>>()
+            var expected = new List<KeyValuePair<string, int>>()
             {
-                new KeyValuePair<string, double>("Tesztelo", 2)
+                new KeyValuePair<string, int>("Tesztelo", 2)
             };
 
             //Act
@@ -197,9 +171,6 @@ namespace F27T0P_HFT_2021222.Test
         [Test]
         public void GpuWithoutOwner()
         {
-            //Arrange
-
-
             //Act
             var result = gl.GetGpuWithoutOwner();
 
@@ -211,13 +182,29 @@ namespace F27T0P_HFT_2021222.Test
         public void LeastSpentCustomer()
         {
             //Arrange
-            var expected = new List<KeyValuePair<string, double>>()
+            var expected = new List<KeyValuePair<string, int>>()
             {
-                new KeyValuePair<string, double>("Vadállat Borisz", 1000000)
+                new KeyValuePair<string, int>("Vadállat Borisz", 1000000)
             };
 
             //Act
             var result = cl.GetLowestValueSpentCustomer();
+
+            //Assert
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void MostSpentCustomer()
+        {
+            //Arrange
+            var expected = new List<KeyValuePair<string, int>>()
+            {
+                new KeyValuePair<string, int>("Tesztelo", 1050000)
+            };
+
+            //Act
+            var result = cl.GetHighestValueSpentCustomer();
 
             //Assert
             Assert.That(result, Is.EqualTo(expected));

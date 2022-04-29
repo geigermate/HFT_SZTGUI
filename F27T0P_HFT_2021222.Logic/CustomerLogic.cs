@@ -85,22 +85,23 @@ namespace F27T0P_HFT_2021222.Logic
             return q.Take(1);
         }
 
-        public IEnumerable<Customer> GetHighestValueSpentCustomer()
+        public IEnumerable<KeyValuePair<string, int>> GetHighestValueSpentCustomer()
         {
-            return (IEnumerable<Customer>)(from x in this.repo.ReadAll()
-                                           group x by x.BoughtCards.Sum(gpu => gpu.BasePrice) into g
-                                           orderby g.Key descending
-                                           select new RichCustomer()
-                                           {
-                                               Name = (this.repo.ReadAll().Select(x => x.Name)).ToString(),
-                                               AllGpuValue = (int)g.Key
-                                           });
+            //return (from x in this.repo.ReadAll()
+            //        group x by x.BoughtCards.Sum(gpu => gpu.BasePrice) into g
+            //        orderby g.Key descending
+            //        select new RichCustomer()
+            //        {
+            //            Name = (this.repo.ReadAll().Select(x => x.Name)).ToString(),
+            //            AllGpuValue = (int)g.Key
+            //        });
+
+            var q = from x in this.repo.ReadAll()
+                    orderby x.BoughtCards.Sum(gpu => gpu.BasePrice) descending
+                    select new KeyValuePair<string, int>(x.Name, x.BoughtCards.Sum(gpu => gpu.BasePrice) ?? 0);
+
+            return q.Take(1);
         }
 
-        public class RichCustomer
-        {
-            public string Name { get; set; }
-            public int AllGpuValue { get; set; }
-        }
     }
 }
