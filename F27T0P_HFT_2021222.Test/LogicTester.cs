@@ -65,5 +65,16 @@ namespace F27T0P_HFT_2021222.Test
             //Assert
             Assert.That(result, Is.EqualTo(750000));
         }
+
+        [Test]
+        public void TestDelete()
+        {
+            // Act
+            cl.Delete(1);
+
+            // Assert
+            mockCustomerRepo
+                .Verify(r => r.Delete(It.IsAny<int>()), Times.Once);
+        }
     }
 }
