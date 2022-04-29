@@ -19,6 +19,10 @@ namespace F27T0P_HFT_2021222.Logic
 
         public void Create(Brand item)
         {
+            if (item.Name.Length <= 2)
+            {
+                throw new ArgumentException("Brand name too short...");
+            }
             this.repo.Create(item);
         }
 
@@ -29,7 +33,7 @@ namespace F27T0P_HFT_2021222.Logic
 
         public Brand Read(int id)
         {
-            return this.repo.Read(id);
+            return this.repo.Read(id) ?? throw new ArgumentException("Brand with the specified id doesn't exist.");
         }
 
         public IQueryable<Brand> ReadAll()

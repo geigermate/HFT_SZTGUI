@@ -20,6 +20,10 @@ namespace F27T0P_HFT_2021222.Logic
 
         public void Create(GpuType item)
         {
+            if (item.Name == "")
+            {
+                throw new ArgumentException("GPU can't exist with no name...");
+            }
             this.repo.Create(item);
         }
 
@@ -30,7 +34,7 @@ namespace F27T0P_HFT_2021222.Logic
 
         public GpuType Read(int id)
         {
-            return this.repo.Read(id);
+            return this.repo.Read(id) ?? throw new ArgumentException("GPU with the specified id doesn't exist.");
         }
 
         public IQueryable<GpuType> ReadAll()

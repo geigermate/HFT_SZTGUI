@@ -20,6 +20,10 @@ namespace F27T0P_HFT_2021222.Logic
 
         public void Create(Customer item)
         {
+            if (item.Name == "")
+            {
+                throw new ArgumentException("Person name doesn't exist.");
+            }
             this.repo.Create(item);
         }
 
@@ -35,7 +39,7 @@ namespace F27T0P_HFT_2021222.Logic
 
         public Customer Read(int id)
         {
-            return this.repo.Read(id);
+            return this.repo.Read(id) ?? throw new ArgumentException("Customer with the specified id doesn't exist.");
         }
 
         public IQueryable<Customer> ReadAll()
