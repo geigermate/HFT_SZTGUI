@@ -50,18 +50,23 @@ namespace F27T0P_HFT_2021222.Logic
 
         //NON-CRUD
 
-        public IEnumerable<GpuType> GetGpuWithoutOwner()
+        public double GetAverageGpuPrice()
         {
-            return (IEnumerable<GpuType>)(from x in this.repo.ReadAll()
+            return this.repo.ReadAll().Average(g => g.BasePrice) ?? 0;
+        }
+
+        public IEnumerable<string> GetGpuWithoutOwner()
+        {
+            return from x in this.repo.ReadAll()
                    where x.CustomerId.Equals(0)
-                   select x.Name);
+                   select x.Name;
         }
 
         public IEnumerable<GpuType> GetGpuWithMultipleBrands()
         {
             return (IEnumerable<GpuType>)(from x in this.repo.ReadAll()
-                   where x.Brands.Count >= 2
-                   select x.Name);
+                                          where x.Brands.Count() > 1
+                                          select x.Name);
         }
 
         public IEnumerable<GpuType> GetGpuWithShortestBrandName()
