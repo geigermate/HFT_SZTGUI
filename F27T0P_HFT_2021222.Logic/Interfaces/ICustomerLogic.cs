@@ -15,6 +15,8 @@ namespace F27T0P_HFT_2021222.Logic.Interfaces
         IQueryable<Customer> ReadAll();
         void Update(Customer item);
 
+        double GetAverageGpuPriceForAPerson(int customerId);
+
         IEnumerable<KeyValuePair<string, int>> GetMostOwnedGpuCustomers();
 
         IEnumerable<KeyValuePair<string, int>> GetOwnersOrderedByNumOfGpus();

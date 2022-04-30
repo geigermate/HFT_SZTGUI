@@ -57,18 +57,32 @@ namespace F27T0P_HFT_2021222.Logic
 
         public IEnumerable<KeyValuePair<string, int>> GetMostOwnedGpuCustomers()
         {
-            return from c in this.repo.ReadAll()
-                   let max = this.repo.ReadAll().Max(c => c.BoughtCards.ToArray().Length)
-                   where c.BoughtCards.Count() >= max
-                   select new KeyValuePair<string, int>(c.Name, c.BoughtCards.Count());
+            //return from c in this.repo.ReadAll()
+            //       let max = this.repo.ReadAll().Max(c => c.BoughtCards.ToArray().Length)
+            //       where c.BoughtCards.Count() >= max
+            //       select new KeyValuePair<string, int>(c.Name, c.BoughtCards.Count());
+
+            //Újra írva a Controller miatt
+            var q = from c in this.repo.ReadAll()
+                    orderby c.BoughtCards.Count() descending
+                    select new KeyValuePair<string, int>(c.Name, (int)(c.BoughtCards.Count()));
+
+            return q.Take(1);
         }
 
         public IEnumerable<KeyValuePair<string, int>> GetOwnersOrderedByNumOfGpus()
         {
-            return from x in this.repo.ReadAll()
-                   orderby x.BoughtCards.Count() descending
-                   group x by x.Name into g
-                   select new KeyValuePair<string, int>(g.Key, g.Sum(x => x.BoughtCards.Count()));
+            //var q = from x in this.repo.ReadAll()
+            //        orderby x.BoughtCards.Count() descending
+            //        group x by x.Name into g
+            //        select new KeyValuePair<string, int>(g.Key, g.Sum(x => x.BoughtCards.Count()));
+
+            //Újra írva a Controller miatt
+            var q = from x in this.repo.ReadAll()
+                    orderby x.BoughtCards.Count() descending
+                    select new KeyValuePair<string, int>(x.Name, (int)(x.BoughtCards.Count()));
+
+            return q;
         }
 
         public IEnumerable<KeyValuePair<string, int>> GetLowestValueSpentCustomer()

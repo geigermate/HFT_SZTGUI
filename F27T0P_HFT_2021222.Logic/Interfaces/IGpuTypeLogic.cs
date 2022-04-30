@@ -14,5 +14,10 @@ namespace F27T0P_HFT_2021222.Logic.Interfaces
         GpuType Read(int id);
         IQueryable<GpuType> ReadAll();
         void Update(GpuType item);
+
+        double GetAverageGpuPrice();
+        IEnumerable<string> GetGpuWithoutOwner();
+        IEnumerable<string> GetGpuWithMultipleBrands();
+
     }
 }
