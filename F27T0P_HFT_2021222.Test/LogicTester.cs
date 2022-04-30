@@ -209,5 +209,128 @@ namespace F27T0P_HFT_2021222.Test
             //Assert
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void TestReadWithValidIdReturnsExpectedObject()
+        {
+            // Arrange
+            var testGpus = new List<GpuType>()
+            {
+                new GpuType()
+                {
+                    Id = 1,
+                    Name = "GTX 1660",
+                    BasePrice = 150000,
+                    CustomerId = 1
+                },
+
+                new GpuType()
+                {
+                    Id = 2,
+                    Name = "RX 6950XT",
+                    BasePrice = 900000,
+                    CustomerId = 1
+                }
+            };
+
+            Customer expected = new Customer()
+            {
+                Id = 1,
+                Name = "János",
+                BoughtCards = testGpus
+            };
+
+            mockCustomerRepo
+                .Setup(r => r.Read(1))
+                .Returns(expected);
+
+            // Act
+            var actual = cl.Read(1);
+
+            // Assert
+            Assert.That(actual, Is.EqualTo(expected));
+
+            // Megjegyzés: Az olyan osztályoknál, amilyen típusú objektum egy logic metódus eredménye lehet, mindig célszerű felülírni az Equals() és a GetHashCode() metódusokat!
+        }
+
+        [Test]
+        public void GpuWithMultipleBrandsTest()
+        {
+            //Arrange
+            var expected = new List<GpuType>()
+            {
+                new GpuType()
+                {
+                    Name = "RTX 3050"
+                }
+            };
+
+            //Act
+            var result = gl.GetGpuWithMultipleBrands();
+
+            //Assert
+            Assert.That(result.ToArray()[0].ToString(), Is.EqualTo(expected.ToArray()[0].Name));
+        }
+
+        [Test]
+        public void TestReadWithInvalidIdThrowsException()
+        {
+            // Arrange
+            mockCustomerRepo
+                .Setup(r => r.Read(It.IsAny<int>()))
+                .Returns(value: null);
+
+            // Act + Assert
+            Assert.Throws<ArgumentException>(() => cl.Read(1));
+        }
+
+        [Test]
+        public void CreateGpuNameTest()
+        {
+            var gpu = new GpuType() { Name = "GTX 1080" };
+
+            //ACT
+            gl.Create(gpu);
+
+            //ASSERT
+            mockGpuRepo.Verify(r => r.Create(gpu), Times.Once);
+        }
+
+        [Test]
+        public void TestCreatingCustomer()
+        {
+            //Arrange
+            var testGpus = new List<GpuType>()
+            {
+                new GpuType()
+                {
+                    Id = 1,
+                    Name = "GTX 1660",
+                    BasePrice = 150000,
+                    CustomerId = 1
+                },
+
+                new GpuType()
+                {
+                    Id = 2,
+                    Name = "RX 6950XT",
+                    BasePrice = 900000,
+                    CustomerId = 1
+                }
+            };
+
+            Customer randomPerson = new Customer()
+            {
+                Id = 1,
+                Name = "János",
+                BoughtCards = testGpus
+            };
+
+            //Act
+            cl.Create(randomPerson);
+
+            //Assert
+            mockCustomerRepo.Verify(r => r.Create(randomPerson), Times.Once);
+        }
     }
 }

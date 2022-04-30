@@ -62,17 +62,18 @@ namespace F27T0P_HFT_2021222.Logic
                    select x.Name;
         }
 
-        public IEnumerable<GpuType> GetGpuWithMultipleBrands()
+        public IEnumerable<string> GetGpuWithMultipleBrands()
         {
-            return (IEnumerable<GpuType>)(from x in this.repo.ReadAll()
-                                          where x.Brands.Count() > 1
-                                          select x.Name);
+            return from x in this.repo.ReadAll()
+                   where x.Brands.Count() > 1
+                   select x.Name;
         }
 
-        public IEnumerable<GpuType> GetGpuWithShortestBrandName()
-        {
-            return (IEnumerable<GpuType>)this.repo.ReadAll()
-                                                  .Select(gpu => gpu.Brands.Where(brand => brand.Name.Length <= 3));
-        }
+        //public IEnumerable<KeyValuePair<string, string>> GetGpuWithShortestBrandName()
+        //{
+        //    //return this.repo.ReadAll().Select(gpu => gpu.Brands.Where(brand => brand.Name.Length <= 3));
+        //    return from x in this.repo.ReadAll()
+        //           select new KeyValuePair<string, string>(x.Name, x.Brands.);
+        //}
     }
 }
