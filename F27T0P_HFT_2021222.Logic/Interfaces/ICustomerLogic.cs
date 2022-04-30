@@ -14,5 +14,13 @@ namespace F27T0P_HFT_2021222.Logic.Interfaces
         Customer Read(int id);
         IQueryable<Customer> ReadAll();
         void Update(Customer item);
+
+        IEnumerable<KeyValuePair<string, int>> GetMostOwnedGpuCustomers();
+
+        IEnumerable<KeyValuePair<string, int>> GetOwnersOrderedByNumOfGpus();
+
+        IEnumerable<KeyValuePair<string, int>> GetLowestValueSpentCustomer();
+
+        IEnumerable<KeyValuePair<string, int>> GetHighestValueSpentCustomer();
     }
 }
