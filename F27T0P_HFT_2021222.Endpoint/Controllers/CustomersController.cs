@@ -11,7 +11,7 @@ using F27T0P_HFT_2021222.Logic.Interfaces;
 
 namespace F27T0P_HFT_2021222.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
     {

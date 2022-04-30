@@ -1,4 +1,3 @@
-using Castle.Core.Configuration;
 using F27T0P_HFT_2021222.Logic;
 using F27T0P_HFT_2021222.Logic.Interfaces;
 using F27T0P_HFT_2021222.Models;
@@ -8,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
@@ -43,7 +43,7 @@ namespace F27T0P_HFT_2021222.Endpoint
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "F27T0P_HFT_2021222.Endpoint", Version = "v1" });
             });
         }
 
@@ -54,7 +54,7 @@ namespace F27T0P_HFT_2021222.Endpoint
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1"));
+                app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "F27T0P_HFT_2021222.Endpoint v1"); c.RoutePrefix = String.Empty; });
             }
 
             app.UseExceptionHandler(c => c.Run(async context =>
