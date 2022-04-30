@@ -22,6 +22,12 @@ namespace F27T0P_HFT_2021222.Endpoint.Controllers
             this.cl = cl;
         }
 
+        [HttpGet("{customerId}")]
+        public double GetAverageGpuPriceForAPerson(int customerId)
+        {
+            return cl.GetAverageGpuPriceForAPerson(customerId);
+        }
+
         [HttpGet]
         public IEnumerable<KeyValuePair<string, int>> GetMostOwnedGpuCustomers()
         {
