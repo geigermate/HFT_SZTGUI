@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace F27T0P_HFT_2021222.Models
@@ -19,6 +20,7 @@ namespace F27T0P_HFT_2021222.Models
         public string Name { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual GpuType GpuType { get; set; }
 
         [ForeignKey(nameof(GpuType))]

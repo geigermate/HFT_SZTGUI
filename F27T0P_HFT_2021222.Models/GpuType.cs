@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace F27T0P_HFT_2021222.Models
@@ -21,9 +22,11 @@ namespace F27T0P_HFT_2021222.Models
         public int? BasePrice { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual Customer Customer { get; set; }
         
         [NotMapped]
+        [JsonIgnore]
         public virtual ICollection<Brand> Brands { get; set; }
 
         [ForeignKey(nameof(Customer))]
