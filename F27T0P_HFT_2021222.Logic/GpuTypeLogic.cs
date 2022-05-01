@@ -68,12 +68,5 @@ namespace F27T0P_HFT_2021222.Logic
                    where x.Brands.Count() > 1
                    select x.Name;
         }
-
-        //public IEnumerable<KeyValuePair<string, string>> GetGpuWithShortestBrandName()
-        //{
-        //    //return this.repo.ReadAll().Select(gpu => gpu.Brands.Where(brand => brand.Name.Length <= 3));
-        //    return from x in this.repo.ReadAll()
-        //           select new KeyValuePair<string, string>(x.Name, x.Brands.);
-        //}
     }
 }
