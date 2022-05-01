@@ -54,7 +54,8 @@ namespace F27T0P_HFT_2021222.Endpoint
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "F27T0P_HFT_2021222.Endpoint v1"); c.RoutePrefix = String.Empty; });
+                //app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "F27T0P_HFT_2021222.Endpoint v1"); c.RoutePrefix = String.Empty; });
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", @"F27T0P_HFT_2021222.Endpoint v1"));
             }
 
             app.UseExceptionHandler(c => c.Run(async context =>
