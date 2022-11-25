@@ -59,7 +59,7 @@ namespace F27T0P_HFT_2021222.Client
 
             if (entity == "Customer")
             {
-                List<Customer> customers = rest.Get<Customer>("customers");
+                List<Customer> customers = rest.Get<Customer>("customer"); // itt customers volt 2022.11.25 16:19, valamint az endpointban a CustomerController el volt írva CustomersControllerre ezért nem volt jó a konzolos alkalmazás
                 foreach (var item in customers)
                 {
                     Console.WriteLine(item.Id + ": " + item.Name);
