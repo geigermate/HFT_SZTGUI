@@ -14,13 +14,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBrand}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Label Content="{Binding Name}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        
         <StackPanel Grid.Column="1">
             <Button Content="Edit Brands" Click="OpenBrandWindow" Margin="10" Padding="10"/>
             <Button Content="Delete Brand" Command="{Binding DeleteBrandCommand}" Margin="10" Padding="10"/>

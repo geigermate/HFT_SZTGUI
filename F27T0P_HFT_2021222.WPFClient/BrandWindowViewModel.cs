@@ -65,6 +65,7 @@ namespace F27T0P_HFT_2021222.WPFClient
                     {
                         Brands.Delete(SelectedBrand.Id);
                     },
+
                     () => { return SelectedBrand != null; });
 
                 SelectedBrand = new Brand();
