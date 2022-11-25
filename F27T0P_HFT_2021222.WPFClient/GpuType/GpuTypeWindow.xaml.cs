@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace F27T0P_HFT_2021222.WPFClient
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GpuTypeWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GpuTypeWindow : Window
     {
-        public MainWindow()
+        public GpuTypeWindow()
         {
             InitializeComponent();
-        }
-
-        private void OpenBrandWindow(object sender, RoutedEventArgs e)
-        {
-            BrandWindow bw = new BrandWindow();
-            bw.Show();
         }
     }
 }

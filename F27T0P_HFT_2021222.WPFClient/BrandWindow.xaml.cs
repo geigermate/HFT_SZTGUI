@@ -18,17 +18,11 @@ namespace F27T0P_HFT_2021222.WPFClient
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class BrandWindow : Window
     {
-        public MainWindow()
+        public BrandWindow()
         {
             InitializeComponent();
-        }
-
-        private void OpenBrandWindow(object sender, RoutedEventArgs e)
-        {
-            BrandWindow bw = new BrandWindow();
-            bw.Show();
         }
     }
 }
