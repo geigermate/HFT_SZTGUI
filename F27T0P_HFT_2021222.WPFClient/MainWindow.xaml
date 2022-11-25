@@ -17,8 +17,8 @@
         
         <StackPanel Grid.Column="1">
             <Button Content="Edit Brands" Click="OpenBrandWindow" Margin="10" Padding="10"/>
-            <Button Content="Delete Brand" Command="{Binding DeleteBrandCommand}" Margin="10" Padding="10"/>
-            <Button Content="Update Brand" Command="{Binding UpdateBrandCommand}" Margin="10" Padding="10"/>
+            <Button Content="Edit GpuTypes" Click="OpenGpuTypeWindow" Margin="10" Padding="10"/>
+            <Button Content="Edit Customers" Click="OpenCustomerWindow" Margin="10" Padding="10"/>
         </StackPanel>
 
     </Grid>

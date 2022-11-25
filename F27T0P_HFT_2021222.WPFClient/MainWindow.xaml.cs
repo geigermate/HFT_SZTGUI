@@ -30,5 +30,17 @@ namespace F27T0P_HFT_2021222.WPFClient
             BrandWindow bw = new BrandWindow();
             bw.Show();
         }
+
+        private void OpenGpuTypeWindow(object sender, RoutedEventArgs e)
+        {
+            GpuTypeWindow gw = new GpuTypeWindow();
+            gw.Show();
+        }
+
+        private void OpenCustomerWindow(object sender, RoutedEventArgs e)
+        {
+            CustomerWindow cw = new CustomerWindow();
+            cw.Show();
+        }
     }
 }

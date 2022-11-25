@@ -33,8 +33,6 @@ namespace F27T0P_HFT_2021222.WPFClient
                     OnPropertyChanged();
 
                     (DeleteGpuType as RelayCommand).NotifyCanExecuteChanged();
-
-
                 }
             }
         }
@@ -77,6 +75,5 @@ namespace F27T0P_HFT_2021222.WPFClient
                 return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
             }
         }
-
     }
 }
