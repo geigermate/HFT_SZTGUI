@@ -13,11 +13,11 @@ namespace F27T0P_HFT_2021222.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class CustomerController : ControllerBase
     {
         ICustomerLogic cl;
 
-        public CustomersController(ICustomerLogic cl)
+        public CustomerController(ICustomerLogic cl)
         {
             this.cl = cl;
         }
@@ -25,31 +25,31 @@ namespace F27T0P_HFT_2021222.Endpoint.Controllers
         [HttpGet]
         public IEnumerable<Customer> ReadAll()
         {
-            return this.cl.ReadAll();
+            return cl.ReadAll();
         }
 
         [HttpGet("{id}")]
         public Customer Read(int id)
         {
-            return this.cl.Read(id);
+            return cl.Read(id);
         }
 
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            this.cl.Delete(id);
+            cl.Delete(id);
         }
 
         [HttpPut]
         public void Update([FromBody] Customer customer)
         {
-            this.cl.Update(customer);
+            cl.Update(customer);
         }
 
         [HttpPost]
         public void Create([FromBody] Customer customer)
         {
-            this.cl.Create(customer);
+            cl.Create(customer);
         }
     }
 }
