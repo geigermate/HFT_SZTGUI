@@ -26,6 +26,12 @@ namespace F27T0P_HFT_202120222.JSClient
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(x => x
+            .AllowCredentials()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithOrigins("http://localhost:59735"));
+
             app.UseRouting();
 
             app.UseStaticFiles();

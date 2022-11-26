@@ -1,0 +1,57 @@
+﻿table {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+}
+
+th {
+    background-color: lightcyan;
+}
+
+
+#updateformdiv {
+    display: none; /*ne látszódjon*/
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+    #updateformdiv label, button, input { /*updateformdiven belüli labelekre, buttonokra, inputokra kéne padding mert nagyon egybefolyik*/
+        margin: 10px;
+        padding: 6px;
+    }
+
+    #updateformdiv label {
+        font-weight: bolder;
+    }
+
+
+#formdiv {
+    display: flex; /*olyan mint a stack panel*/
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+    #formdiv label, button, input { /*formdiven belüli labelekre, buttonokra, inputokra kéne padding mert nagyon egybefolyik*/
+        margin: 10px;
+        padding: 6px;
+    }
+
+    #formdiv label {
+        font-weight: bolder;
+    }
+
+table button {
+    padding: 3px;
+}
