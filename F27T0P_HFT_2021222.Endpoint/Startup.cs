@@ -1,3 +1,4 @@
+using F27T0P_HFT_2021222.Endpoint.Services;
 using F27T0P_HFT_2021222.Logic;
 using F27T0P_HFT_2021222.Logic.Interfaces;
 using F27T0P_HFT_2021222.Models;
@@ -30,6 +31,8 @@ namespace F27T0P_HFT_2021222.Endpoint
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
+
             services.AddSingleton<GpuCustomerDbContext>();
 
             services.AddTransient<IRepository<Brand>, BrandRepository>();
@@ -74,6 +77,7 @@ namespace F27T0P_HFT_2021222.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
