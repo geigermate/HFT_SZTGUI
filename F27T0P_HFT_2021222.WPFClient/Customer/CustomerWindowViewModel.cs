@@ -43,7 +43,7 @@ namespace F27T0P_HFT_2021222.WPFClient
         {
             if (!IsInDesignMode)
             {
-                Customers = new RestCollection<Customer>("http://localhost:42137/", "customer");
+                Customers = new RestCollection<Customer>("http://localhost:42137/", "customer", "hub");
 
                 CreateCustomer = new RelayCommand(
                     () =>
