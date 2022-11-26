@@ -45,7 +45,7 @@ namespace F27T0P_HFT_2021222.WPFClient
         {
             if (!IsInDesignMode)
             {
-                GpuTypes = new RestCollection<GpuType>("http://localhost:42137/", "gputype");
+                GpuTypes = new RestCollection<GpuType>("http://localhost:42137/", "gputype", "hub");
 
                 CreateGpuType = new RelayCommand(
                     () => { GpuTypes.Add(new GpuType() { Name = SelectedGpuType.Name }); });

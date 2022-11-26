@@ -47,7 +47,7 @@ namespace F27T0P_HFT_2021222.WPFClient
         {
             if (!IsInDesignMode)
             {
-                Brands = new RestCollection<Brand>("http://localhost:42137/", "brand");
+                Brands = new RestCollection<Brand>("http://localhost:42137/", "brand", "hub");
                 CreateBrandCommand = new RelayCommand(
                     () =>
                     {
