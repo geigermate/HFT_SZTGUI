@@ -70,6 +70,12 @@ namespace F27T0P_HFT_2021222.Endpoint
                 await context.Response.WriteAsJsonAsync(response);
             }));
 
+            app.UseCors(x => x
+            .AllowCredentials()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithOrigins("http://localhost:59735"));
+
             app.UseRouting();
 
             app.UseAuthorization();

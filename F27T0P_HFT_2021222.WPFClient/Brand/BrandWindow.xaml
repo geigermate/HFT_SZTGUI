@@ -19,13 +19,13 @@
         <ListBox ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBrand}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding Name}"/>
+                    <Label Content="{Binding BrandName}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
             <Label Content="Name" Background="AliceBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedBrand.Name}" Padding="10" Margin="0,0,0,30"/>
+            <TextBox Text="{Binding SelectedBrand.BrandName}" Padding="10" Margin="0,0,0,30"/>
             <Button Content="Create Brand" Command="{Binding CreateBrandCommand}" Margin="10" Padding="10"/>
             <Button Content="Delete Brand" Command="{Binding DeleteBrandCommand}" Margin="10" Padding="10"/>
             <Button Content="Update Brand" Command="{Binding UpdateBrandCommand}" Margin="10" Padding="10"/>

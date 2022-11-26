@@ -13,11 +13,11 @@ namespace F27T0P_HFT_2021222.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int BrandId { get; set; } //Itt simán csak Id volt ezért a JSClientbe nem tudta betölteni a megfelelő mezőket...
 
         [MaxLength(50)]
         [Required]
-        public string Name { get; set; }
+        public string BrandName { get; set; } //Itt simán csak név volt, átnevezés után működik...
 
         [NotMapped]
         [JsonIgnore]

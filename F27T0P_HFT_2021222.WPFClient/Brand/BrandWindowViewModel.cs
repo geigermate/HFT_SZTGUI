@@ -28,8 +28,8 @@ namespace F27T0P_HFT_2021222.WPFClient
                     //SetProperty(ref selectedBrand, value);
                     selectedBrand = new Brand()
                     {
-                        Id = value.Id,
-                        Name = value.Name
+                        BrandId = value.BrandId,
+                        BrandName = value.BrandName
                     };
                     OnPropertyChanged();
                     (DeleteBrandCommand as RelayCommand).NotifyCanExecuteChanged();
@@ -48,10 +48,11 @@ namespace F27T0P_HFT_2021222.WPFClient
             if (!IsInDesignMode)
             {
                 Brands = new RestCollection<Brand>("http://localhost:42137/", "brand", "hub");
+
                 CreateBrandCommand = new RelayCommand(
                     () =>
                     {
-                        Brands.Add(new Brand() { Name = SelectedBrand.Name });
+                        Brands.Add(new Brand() { BrandName = SelectedBrand.BrandName });
                     });
 
                 UpdateBrandCommand = new RelayCommand(
@@ -63,7 +64,7 @@ namespace F27T0P_HFT_2021222.WPFClient
                 DeleteBrandCommand = new RelayCommand(
                     () =>
                     {
-                        Brands.Delete(SelectedBrand.Id);
+                        Brands.Delete(SelectedBrand.BrandId);
                     },
 
                     () => { return SelectedBrand != null; });

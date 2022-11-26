@@ -19,7 +19,7 @@ namespace F27T0P_HFT_2021222.Client
             {
                 Console.Write("Enter Brand Name: ");
                 string name = Console.ReadLine();
-                rest.Post(new Brand() { Name = name }, "brand");
+                rest.Post(new Brand() { BrandName = name }, "brand");
             }
 
             if (entity == "GpuType")
@@ -44,7 +44,7 @@ namespace F27T0P_HFT_2021222.Client
                 List<Brand> brands = rest.Get<Brand>("brand");
                 foreach (var item in brands)
                 {
-                    Console.WriteLine(item.Id + ": " + item.Name);
+                    Console.WriteLine(item.BrandId + ": " + item.BrandName);
                 }
             }
 
@@ -75,9 +75,9 @@ namespace F27T0P_HFT_2021222.Client
                 Console.Write("Enter Brand's id to update: ");
                 int id = int.Parse(Console.ReadLine());
                 Brand one = rest.Get<Brand>(id, "brand");
-                Console.Write($"New name [old: {one.Name}]: ");
+                Console.Write($"New name [old: {one.BrandName}]: ");
                 string name = Console.ReadLine();
-                one.Name = name;
+                one.BrandName = name;
                 rest.Put(one, "brand");
             }
 

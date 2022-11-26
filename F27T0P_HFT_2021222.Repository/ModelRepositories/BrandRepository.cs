@@ -15,12 +15,12 @@ namespace F27T0P_HFT_2021222.Repository.ModelRepositories
 
         public override Brand Read(int id)
         {
-            return ctx.Brands.FirstOrDefault(b => b.Id == id);
+            return ctx.Brands.FirstOrDefault(b => b.BrandId == id);
         }
 
         public override void Update(Brand item)
         {
-            var old = Read(item.Id);
+            var old = Read(item.BrandId);
             foreach (var prop in old.GetType().GetProperties())
             {
                 if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)

@@ -19,7 +19,7 @@ namespace F27T0P_HFT_2021222.Logic
 
         public void Create(Brand item)
         {
-            if (item.Name.Length <= 2)
+            if (item.BrandName.Length <= 2)
             {
                 throw new ArgumentException("Brand name too short...");
             }
